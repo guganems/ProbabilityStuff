@@ -27,5 +27,5 @@ fun noOrderAndRepetition(){
     print("n = ")
     var n = readLine()!!.toInt()
 
-    
+    var result = Mathematics.factorial(m)
 }
