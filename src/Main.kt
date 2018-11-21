@@ -4,13 +4,20 @@ fun main(vararg args: String){
     var userMessageForNextAction: String
 
     do {
+        println("Enter Command: ")
         userMessageForNextAction = readLine().toString()
 
-        when(userMessageForNextAction){
-            "HELP" -> help()
-            "NOORDER NOREPETITION" -> noOrderAndRepetition()
-        }
-
+        do {
+            var again: String = "no"
+            when (userMessageForNextAction) {
+                "HELP" -> help()
+                "NOORDER NOREPETITION" -> noOrderAndRepetition()
+            }
+            if (userMessageForNextAction != "EXIT") {
+                println("Try again? ")
+                var again: String = readLine()!!
+            }
+        }while(again == "yes" || again == "y" || again == "1")
     }while (userMessageForNextAction != "EXIT")
 }
 
@@ -22,10 +29,12 @@ fun help(){
 fun noOrderAndRepetition(){
     println("Enter m & n where \'C[n]^{m}\'")
     print("m = ")
-    var m = readLine()!!.toInt()
+    val m = readLine()!!.toInt()
     println()
     print("n = ")
-    var n = readLine()!!.toInt()
+    val n = readLine()!!.toInt()
 
-    var result = Mathematics.factorial(m)
+    val result = Mathematics.factorial(m)/(Mathematics.factorial(n)*Mathematics.factorial((m-n)))
+
+    println(result)
 }
